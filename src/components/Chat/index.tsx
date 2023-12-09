@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams  } from 'react-router-dom';
 import io from 'socket.io-client';
 import './../../styles/chat.css';
+
 
 
 type MessageType = {
@@ -17,7 +18,7 @@ const Chat = () => {
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [newMessage, setNewMessage] = useState<string>(''); 
 
-  const { username } = useParams();
+  const { username } = useParams(); 
   const socket = io('https://serverchat-bmmr.onrender.com/');
 
   useEffect(() => { 
@@ -72,6 +73,10 @@ const Chat = () => {
     }
   };
 
+  const handleExit = () => { 
+    window.location.href = '/';  
+  };
+
   return (
     <div className="chat-container">
     <div className="user-list">
@@ -84,6 +89,9 @@ const Chat = () => {
         ))}
       </ul>
     </div>
+    <div className="exit-container">
+          <button onClick={handleExit}>Salir</button>
+        </div>
     <div className="chat-area">
       <h2>CHAT CON {selectedUser}</h2>
       <div className="message-container">

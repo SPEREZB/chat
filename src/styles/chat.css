@@ -10,8 +10,8 @@
     flex: 1;
     max-width: 20%;
     font-size: 16px;
-    margin-right: 30%;
-  }
+    margin-right: 5%;
+  } 
   
   .user-list h2 {
     margin-bottom: 20px;
@@ -35,11 +35,25 @@
   .chat-area {
     flex: 3;
     max-width: 80%;
+    margin-left: 35%;
   }
   
   .chat-area h2 {
     margin-bottom: 20px;
     font-size: 24px;
+  }
+
+  .exit-container {
+    margin-top: 20px;
+  }
+  
+  .exit-container button {
+    padding: 10px;
+    background-color: #dc3545; /* Color de fondo rojo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
   }
   
   /* Estilos responsivos para pantallas pequeñas */
