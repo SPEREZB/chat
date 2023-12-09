@@ -16,13 +16,13 @@ const Chat = () => {
   const [newMessage, setNewMessage] = useState<string>(''); 
 
   const { username } = useParams();
-  const socket = io('http://localhost:3001');
+  const socket = io('https://serverchat-bmmr.onrender.com/');
 
   useEffect(() => { 
     if (username) {
       socket.emit('userConnected', username);
     } 
-    fetch('http://localhost:3001/usersall')
+    fetch('https://serverchat-bmmr.onrender.com/usersall')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error al obtener la lista de usuarios:', error));

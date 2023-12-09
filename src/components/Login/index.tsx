@@ -21,7 +21,7 @@ import { Navigate } from 'react-router-dom';
     const handleRegister = async () => {
       try {
         // Obtener la lista de usuarios existentes
-        const response = await fetch('http://localhost:3001/users', {
+        const response = await fetch('https://serverchat-bmmr.onrender.com/users', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ import { Navigate } from 'react-router-dom';
           const usernameExists = existingUsers.some((user: { username: string; }) => user.username === username);
     
           if (!usernameExists) { 
-            const registerResponse = await fetch('http://localhost:3001/register', {
+            const registerResponse = await fetch('https://serverchat-bmmr.onrender.com/register', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
