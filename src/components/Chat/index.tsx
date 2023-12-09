@@ -28,12 +28,8 @@ const Chat = () => {
       fetch('https://serverchat-bmmr.onrender.com/usersall')
       .then(response => response.json())
       .then(data => setUsers(data))
-      .catch(error => console.error('Error al obtener la lista de usuarios:', error));
- 
-    socket.on('userConnected', (connectedUsers: string[]) => {
-      console.log('Usuarios Conectados:', connectedUsers);
-      setUsers(connectedUsers);
-    });
+      .catch(error => console.error('Error al obtener la lista de usuarios:', error)); 
+      
     socket.on('newMessage', (message: MessageType) => {
       console.log('Nuevo mensaje recibido:', message); 
        
