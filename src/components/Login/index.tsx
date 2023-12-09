@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { Navigate } from 'react-router-dom';  
-
+import './../../styles/log.css';
  
   
   const Login = () => {
@@ -8,7 +8,6 @@ import { Navigate } from 'react-router-dom';
     const [username, setUsername] = useState('');
     const [realName, setRealName] = useState(''); 
     const [isLogin, setLogin] = useState(false);
- 
   
     const handleUserChange = (e: ChangeEvent<HTMLInputElement>) => {
       setUsername(e.target.value);
@@ -19,9 +18,8 @@ import { Navigate } from 'react-router-dom';
     };
   
     const handleRegister = async () => {
-      try {
-        // Obtener la lista de usuarios existentes
-        const response = await fetch('http://localhost:3001/users', {
+      try { 
+        const response = await fetch('https://serverchat-bmmr.onrender.com/users', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -33,7 +31,7 @@ import { Navigate } from 'react-router-dom';
           const usernameExists = existingUsers.some((user: { username: string; }) => user.username === username);
     
           if (!usernameExists) { 
-            const registerResponse = await fetch('http://localhost:3001/register', {
+            const registerResponse = await fetch('https://serverchat-bmmr.onrender.com/register', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -55,15 +53,16 @@ import { Navigate } from 'react-router-dom';
           console.error('Error al obtener la lista de usuarios');
         }
       } catch (error) {
-        console.error('Error de red', error);
+        console.error('Error', error);
       }
     };
   
     return (
-      <div>
+      
+ <div className="container">
         { (isRegistered || isLogin) && <Navigate to={`/chat/${username}`} replace />}
   
-        <div>
+       
           <h1>LOGIN</h1>
           <div>
             <label>Username:</label>
@@ -71,13 +70,15 @@ import { Navigate } from 'react-router-dom';
           </div>
   
           <div>
-            <label>Real Name:</label>
+            <label>Name:</label>
             <input type="text" value={realName} onChange={handleRealNameChange} />
           </div>
   
-          <button onClick={handleRegister}>Register</button>
-        </div>
+          <button onClick={handleRegister}>GO</button>
+      
       </div>
+ 
+      
     );
   };
   
