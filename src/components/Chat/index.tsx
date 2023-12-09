@@ -44,6 +44,7 @@ const Chat = () => {
 
     socket.on('storedMessages', (storedMessages: MessageType[]) => {
       console.log('Mensajes almacenados:', storedMessages);  
+      setMessages(storedMessages);
     });
   
     socket.emit('getStoredMessages', selectedUser,username);
