@@ -29,7 +29,7 @@ const Chat = () => {
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error al obtener la lista de usuarios:', error)); 
-      
+
     socket.on('newMessage', (message: MessageType) => {
       console.log('Nuevo mensaje recibido:', message); 
        
@@ -76,7 +76,7 @@ const Chat = () => {
   return (
     <div className="chat-container">
     <div className="user-list">
-      <h2>USUARIOS CONECTADOS</h2>
+      <h2>LISTA DE USUARIOS</h2>
       <ul>
         {users.map((user, index) => (
           <li key={index} onClick={() => handleUserClick(user)}>
