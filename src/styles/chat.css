@@ -1,3 +1,4 @@
+
 .chat-container {
     display: flex;
     height: 100%;
@@ -15,11 +16,6 @@
   .user-list h2 {
     margin-bottom: 20px;
     font-size: 20px;
-  }
-  
-  .user-list ul {
-    list-style: none;
-    padding: 0;
   }
   
   .user-list li {
@@ -46,42 +42,18 @@
     font-size: 24px;
   }
   
-  .message-container {
-    height: 300px;
-    overflow-y: scroll;
-    border: 2px solid #4db8ff;
-    padding: 20px;
-    border-radius: 5px;
-    font-size: 18px;
-  }
+  /* Estilos responsivos para pantallas pequeñas */
+  @media screen and (max-width: 600px) {
+    .chat-container {
+      flex-direction: column; /* Cambia la dirección del flex para apilar elementos */
+    }
   
-  .message-container div {
-    margin-bottom: 15px;
-  }
+    .user-list {
+      max-width: 100%;
+      margin-right: 0;
+    }
   
-  .input-container {
-    margin-top: 20px;
-    display: flex;
-  }
-  
-  #message {
-    flex: 1;
-    padding: 10px;
-    margin-right: 10px;
-  }
-  
-  .send-button {
-    padding: 10px;
-    background-color: #4db8ff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .send-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    .chat-area {
+      max-width: 100%;
+    }
   }

@@ -24,7 +24,7 @@ const Chat = () => {
     if (username) {
       socket.emit('userConnected', username);
     } 
-    fetch('https://serverchat-bmmr.onrender.com/usersall')
+      fetch('https://serverchat-bmmr.onrender.com/usersall')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error al obtener la lista de usuarios:', error));
@@ -33,15 +33,14 @@ const Chat = () => {
       console.log('Usuarios Conectados:', connectedUsers);
       setUsers(connectedUsers);
     });
-
     socket.on('newMessage', (message: MessageType) => {
-      console.log('Nuevo mensaje recibido:', message);
-      setMessages((prevMessages) => [...prevMessages, message]);
+      console.log('Nuevo mensaje recibido:', message); 
     });
 
-    socket.on('storedMessages', (storedMessages: MessageType) => {
+    socket.on('storedMessages', (storedMessages: MessageType[]) => {
       console.log('Mensajes almacenados:', storedMessages);
-      setMessages((prevMessages) => [...prevMessages, storedMessages]);
+      setMessages([]);
+      setMessages(storedMessages);
     });
 
    
@@ -57,7 +56,7 @@ const Chat = () => {
     };
   }, [selectedUser]);  
 
-  const handleUserClick = (user: string) => {
+  const handleUserClick = (user: string) => { 
     setSelectedUser(user); 
   };
 
