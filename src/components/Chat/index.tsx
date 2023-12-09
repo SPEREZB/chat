@@ -35,16 +35,16 @@ const Chat = () => {
     });
     socket.on('newMessage', (message: MessageType) => {
       console.log('Nuevo mensaje recibido:', message); 
+       
+      // Verificar si el mensaje ya está en la lista
+      if (!messages.find((msg) => msg.mensaje === message.mensaje)) {
+        setMessages((prevMessages) => [...prevMessages, message]);
+      }
     });
 
     socket.on('storedMessages', (storedMessages: MessageType[]) => {
-      console.log('Mensajes almacenados:', storedMessages);
-      setMessages([]);
-      setMessages(storedMessages);
+      console.log('Mensajes almacenados:', storedMessages);  
     });
-
-   
-
   
     socket.emit('getStoredMessages', selectedUser,username);
 
